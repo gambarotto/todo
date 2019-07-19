@@ -166,6 +166,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation 'com.google.firebase:firebase-core:17.0.0'
 
     // JSC from node_modules
     if (useIntlJsc) {
@@ -173,6 +174,8 @@ dependencies {
     } else {
         implementation 'org.webkit:android-jsc:+'
     }
+    // Auth
+    implementation 'com.google.firebase:firebase-auth:17.0.0'
 }
 
 // Run this once to be able to run the application with BUCK
@@ -183,3 +186,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply plugin: 'com.google.gms.google-services'
